@@ -1,0 +1,106 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last of Us - Detalles del Producto</title>
+    <link rel="stylesheet" href="stylesP.css">
+    <script src="https://kit.fontawesome.com/f4c52f4663.js" crossorigin="anonymous"></script>
+</head>
+<body onload="iniciarPagina()">
+    <header class="header"> 
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagenes/logo.png" alt="logo" class="logo">
+            </a> 
+        </div>
+        <nav> 
+            <ul class="nav-links">
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+    <main class="fondo-12">
+        <div class="input-group2">
+            <form action="#" method="POST" class="reclamacion-form" class="formulario1" onsubmit="validarFormularioReclamaciones(event)">
+                <h2>Libro de Reclamaciones
+                    <div class="pacman-container">
+                        <div class="pacman"></div>
+                    </div>
+                </h2>
+                    <h3>Nombres Completo:</h3>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre completo">
+            
+                    <h3>Correo Electrónico:</h3>
+                    <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+            
+                    <h3>Número de Teléfono:</h3>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Ingresa tu número de teléfono">
+            
+                    <h3 for="reclamacion">Descripción de la Reclamación:</h3>
+                    <textarea id="reclamacion" name="reclamacion" rows="6" required placeholder="Describe tu reclamación aquí..."></textarea>
+            
+                    <h3>Fecha del Incidente:</h3>
+                    <input type="date" id="fecha" name="fecha" required>
+            
+                    <h3>Adjuntar Documentos:</h3>
+                    <input type="file" id="archivo" name="archivo" accept=".jpg, .jpeg, .png, .pdf">
+                    <h3></h3>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="terminos" name="terminos" required>
+                        <h3>Acepto los términos y condiciones</h3>
+                    </div>
+                    <h3></h3>
+                    <button type="submit" class="btn-submit">Enviar Reclamación</button>
+                </div>
+            </form>
+            </div>
+
+            <div class="modal-overlay" id="modalOverlay"></div>
+            <div class="modal" id="modalReclamaciones">
+                <h2>¡Gracias por informarnos sobre tu reclamación!</h2>
+                <p> Lamentamos cualquier inconveniente causado. Nuestro equipo está revisando el caso y
+                nos pondremos en contacto contigo lo antes posible para encontrar una solución.</p>
+                <button onclick="cerrarModalReclamaciones()">Cerrar</button>
+            </div>
+    </main>
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="reclamaciones.html">
+                        <img src="imagenes/libro_de_reclamaciones.png" alt="libro de reclamaciones">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Nuestra idea nace de la experiencia propia al comprar videojuegos, garantizando confianza porque hemos estado en tu lugar.</p>
+                <p>Fundada en 2024, nos comprometemos a ofrecer siempre las mejores ofertas.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="https://www.facebook.com/?locale=es_LA" class="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    <a href="https://x.com/?lang=es" class="fa fa-twitter"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2024 <b>GAME PRIME</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="script.js">
+</script>
