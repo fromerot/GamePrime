@@ -12,8 +12,8 @@ if ($conn->connect_error) {
     die(json_encode(["status" => "error", "message" => "Conexión fallida"]));
 }
 
-// Obtener todos los productos
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+// === PRODUCTOS ===
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['type'])) {
     $result = $conn->query("SELECT * FROM productos");
     $productos = [];
     while ($row = $result->fetch_assoc()) {
@@ -23,8 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     exit();
 }
 
-// Insertar nuevo producto
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_producto') {
     $titulo = $conn->real_escape_string($_POST['titulo']);
     $categoria = $conn->real_escape_string($_POST['categoria']);
     $precio = floatval($_POST['precio']);
@@ -42,10 +41,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit();
 }
 
-// Eliminar producto
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete_producto') {
     $id = intval($_POST['id']);
     $stmt = $conn->prepare("DELETE FROM productos WHERE id = ?");
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success"]);
+    } else {
+        echo json_encode(["status" => "error", "message" => $stmt->error]);
+    }
+    exit();
+}
+
+// === USUARIOS ===
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['type']) && $_GET['type'] === 'usuarios') {
+    $result = $conn->query("SELECT id, nombre, correo, rol FROM usuarios");
+    $usuarios = [];
+    while ($row = $result->fetch_assoc()) {
+        $usuarios[] = $row;
+    }
+    echo json_encode($usuarios);
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_usuario') {
+    $nombre = $conn->real_escape_string($_POST['nombre']);
+    $correo = $conn->real_escape_string($_POST['correo']);
+    $rol = in_array($_POST['rol'], ['cliente', 'admin']) ? $_POST['rol'] : 'cliente';
+
+    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, correo, rol) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $nombre, $correo, $rol);
+
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success"]);
+    } else {
+        echo json_encode(["status" => "error", "message" => $stmt->error]);
+    }
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete_usuario') {
+    $id = intval($_POST['id']);
+    $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
