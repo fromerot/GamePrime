@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // === PRODUCTOS ===
   const formProducto = document.getElementById("formProducto");
   const listaProductos = document.getElementById("listaProductos");
-  const formUsuario = document.getElementById("formUsuario");
-  const listaUsuarios = document.getElementById("listaUsuarios");
 
-  // Cargar productos
   function cargarProductos() {
       fetch('admi.php')
           .then(res => res.json())
@@ -14,17 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
               productos.forEach(p => {
                   const li = document.createElement('li');
                   li.textContent = `${p.titulo} - ${p.categoria} - $${parseFloat(p.precio).toFixed(2)}`;
+
                   const btnEliminar = document.createElement('button');
                   btnEliminar.textContent = 'Eliminar';
                   btnEliminar.style.marginLeft = '10px';
                   btnEliminar.onclick = () => eliminarProducto(p.id);
                   li.appendChild(btnEliminar);
+
                   listaProductos.appendChild(li);
               });
-          });
+          })
+          .catch(err => console.error("Error al cargar productos:", err));
   }
 
-  // Agregar producto
   if (formProducto) {
       formProducto.addEventListener('submit', function(e) {
           e.preventDefault();
@@ -50,11 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
               } else {
                   alert('❌ Error al agregar producto: ' + data.message);
               }
-          });
+          })
+          .catch(err => alert('⚠️ Error: ' + err.message));
       });
   }
 
-  // Eliminar producto
   function eliminarProducto(id) {
       if (!confirm("¿Estás seguro de eliminar este producto?")) return;
 
@@ -72,17 +72,22 @@ document.addEventListener("DOMContentLoaded", () => {
               alert('🗑️ Producto eliminado.');
               cargarProductos();
           } else {
-              alert('❌ Error al eliminar producto: ' + data.message);
+              alert('❌ Error al eliminar: ' + data.message);
           }
-      });
+      })
+      .catch(err => alert('⚠️ Error: ' + err.message));
   }
 
-  // Cargar usuarios
+  // === USUARIOS ===
+  const formUsuario = document.getElementById("formUsuario");
+  const listaUsuarios = document.getElementById("listaUsuarios");
+
   function cargarUsuarios() {
       fetch('admi.php?type=usuarios')
           .then(res => res.json())
           .then(usuarios => {
               listaUsuarios.innerHTML = '';
+              if (!Array.isArray(usuarios)) return;
               usuarios.forEach(u => {
                   const div = document.createElement('div');
                   div.classList.add('usuario-card');
@@ -98,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
           });
   }
 
-  // Agregar usuario
   if (formUsuario) {
       formUsuario.addEventListener('submit', function(e) {
           e.preventDefault();
@@ -126,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Eliminar usuario
   window.eliminarUsuario = function(id) {
       if (!confirm("¿Estás seguro de eliminar a este usuario?")) return;
 
@@ -149,7 +152,112 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Inicializar
+  // === PROVEEDORES ===
+  const formProveedor = document.getElementById("formProveedor");
+  const listaProveedores = document.getElementById("listaProveedores");
+
+  function cargarProveedores() {
+      fetch('admi.php?type=proveedores')
+          .then(res => res.json())
+          .then(proveedores => {
+              listaProveedores.innerHTML = '';
+              if (!Array.isArray(proveedores)) return;
+              proveedores.forEach(p => {
+                  const li = document.createElement('li');
+                  li.textContent = `${p.nombre} - ${p.correo} - Artículos: ${p.articulos}`;
+                  const btnEliminar = document.createElement('button');
+                  btnEliminar.textContent = 'Eliminar';
+                  btnEliminar.style.marginLeft = '10px';
+                  btnEliminar.onclick = () => eliminarProveedor(p.id);
+                  li.appendChild(btnEliminar);
+                  listaProveedores.appendChild(li);
+              });
+          });
+  }
+
+  if (formProveedor) {
+      formProveedor.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const formData = new FormData();
+          formData.append('action', 'add_proveedor');
+          formData.append('nombre', document.getElementById('nombreProveedor').value.trim());
+          formData.append('correo', document.getElementById('correoProveedor').value.trim());
+          formData.append('articulos', document.getElementById('articulosProveedor').value.trim());
+
+          fetch('admi.php', {
+              method: 'POST',
+              body: formData
+          })
+          .then(res => res.json())
+          .then(data => {
+              if (data.status === 'success') {
+                  alert('📦 Proveedor agregado correctamente.');
+                  formProveedor.reset();
+                  cargarProveedores();
+              } else {
+                  alert('❌ Error al agregar proveedor: ' + data.message);
+              }
+          });
+      });
+  }
+
+  function eliminarProveedor(id) {
+      if (!confirm("¿Estás seguro de eliminar este proveedor?")) return;
+
+      const formData = new FormData();
+      formData.append('action', 'delete_proveedor');
+      formData.append('id', id);
+
+      fetch('admi.php', {
+          method: 'POST',
+          body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+          if (data.status === 'success') {
+              alert('🗑️ Proveedor eliminado.');
+              cargarProveedores();
+          } else {
+              alert('❌ Error al eliminar proveedor: ' + data.message);
+          }
+      });
+  }
+
+  // Inicializar todo
   cargarProductos();
   cargarUsuarios();
+  cargarProveedores();
+
+  // === GRÁFICOS CON CHART.JS ===
+  const ctxVentasRegion = document.getElementById('ventasRegionChart')?.getContext('2d');
+  const ctxVentasPlataforma = document.getElementById('ventasPlataformaChart')?.getContext('2d');
+
+  if (ctxVentasRegion) {
+      new Chart(ctxVentasRegion, {
+          type: 'bar',
+          data: {
+              labels: ['América', 'Europa', 'Asia', 'Otros'],
+              datasets: [{
+                  label: 'Ventas por Región',
+                  data: [400, 300, 350, 193],
+                  backgroundColor: '#ff3399'
+              }]
+          }
+      });
+  }
+
+  if (ctxVentasPlataforma) {
+      new Chart(ctxVentasPlataforma, {
+          type: 'pie',
+          data: {
+              labels: ['PC', 'PlayStation', 'Xbox', 'Móvil'],
+              datasets: [{
+                  label: 'Ventas por Plataforma',
+                  data: [500, 300, 200, 243],
+                  backgroundColor: ['#ff3399', '#66ccff', '#99ff99', '#ffcc66']
+              }]
+          }
+      });
+  }
 });

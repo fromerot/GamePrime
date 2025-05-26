@@ -94,5 +94,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit();
 }
 
+// === PROVEEDORES ===
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['type']) && $_GET['type'] === 'proveedores') {
+    $result = $conn->query("SELECT id, nombre, correo, articulos FROM proveedores");
+    $proveedores = [];
+    while ($row = $result->fetch_assoc()) {
+        $proveedores[] = $row;
+    }
+    echo json_encode($proveedores);
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_proveedor') {
+    $nombre = $conn->real_escape_string($_POST['nombre']);
+    $correo = $conn->real_escape_string($_POST['correo']);
+    $articulos = $conn->real_escape_string($_POST['articulos']);
+
+    $stmt = $conn->prepare("INSERT INTO proveedores (nombre, correo, articulos) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $nombre, $correo, $articulos);
+
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success"]);
+    } else {
+        echo json_encode(["status" => "error", "message" => $stmt->error]);
+    }
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete_proveedor') {
+    $id = intval($_POST['id']);
+    $stmt = $conn->prepare("DELETE FROM proveedores WHERE id = ?");
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success"]);
+    } else {
+        echo json_encode(["status" => "error", "message" => $stmt->error]);
+    }
+    exit();
+}
+
+
 echo json_encode(["status" => "error", "message" => "Acción no reconocida"]);
 ?>
