@@ -1,0 +1,593 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Sixtyfour+Convergence&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background-color: #0a141d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nabla", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "EDPT" 100,
+        "EHLT" 12;
+    font-size: 24px;
+    
+}
+
+.header .logo{
+    cursor:pointer;
+}
+
+.header .logo img{
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover{
+    transform: scale(1.2);
+}
+
+.header .nav-links{
+    list-style: none;
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links li:hover{
+    transform: scale(1.1);
+}
+
+.header .nav-links a{
+    text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    right: 0;
+    background-color: #0a141d;
+    z-index: 1000;
+}
+
+.nav-links li {
+    padding: 15px;
+    text-align: center;
+}
+
+.nav-links li a {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none; 
+    }
+
+    .nav-links.active {
+        display: flex; 
+    }
+}
+
+h3{
+    font-family: "Nabla", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "EDPT" 100,
+        "EHLT" 12;
+    font-size: 24px;
+    
+}
+
+.categoria {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #0a141d; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px; 
+    margin-left: 0; 
+    margin-right: auto;
+    position: relative; 
+}
+
+#categoria-juegos {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #1e2a36; 
+    color: #fff; 
+    border: 2px solid #555; 
+    font-size: 16px;
+    font-family: 'Arial', sans-serif; 
+    transition: all 0.3s ease;
+}
+
+#categoria-juegos:hover, #categoria-juegos:focus {
+    background-color: #2c3b4e; 
+    border-color: #00b5e2; 
+    outline: none;
+}
+
+#categoria-juegos option {
+    padding: 10px;
+    background-color: #1e2a36;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+}
+
+#categoria-juegos option:checked {
+    background-color: #00b5e2; 
+    color: #000;
+}
+
+@media screen and (max-width: 600px) {
+    .categoria {
+        width: 80%; 
+        margin-left: 0;
+    }
+}
+
+
+.pie-pagina{
+    width: 100%;
+    background-color: #0a141d;
+}
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+}
+.pie-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pie-pagina .grupo-1 .box figure img{
+    width: 250px;
+}
+.pie-pagina .grupo-1 .box h2{
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.pie-pagina .grupo-1 .box p{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+.pie-pagina .grupo-1 .red-social a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    transition: all 300ms ease;
+}
+.pie-pagina .grupo-1 .red-social a:hover{
+    color: aqua;
+}
+.pie-pagina .grupo-2{
+    background-color: #0a1a2a;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+@media screen and (max-width:800px){
+    .pie-pagina .grupo-1{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+    }
+}
+.pie-pagina .box figure img {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; 
+}
+
+.pie-pagina .box figure img:hover {
+    animation: bounce 1s infinite; 
+    filter: hue-rotate(180deg); 
+}
+
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(-25px); 
+    }
+}
+.fondo-0 {
+    background-image: url('imagenes/fondo1-transformed.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    min-height: 100vh; 
+    padding-bottom: 60px; 
+    position: relative; 
+    overflow: hidden; 
+}
+
+@media (max-width: 800px) {
+    .fondo-0 , .fondo-11 {
+    background-size: cover;
+    }
+}
+
+.fondo-11{
+    background-image: url('imagenes/fondo_ofert.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    min-height: 100vh; 
+    padding-bottom: 60px; 
+    position: relative; 
+    overflow: hidden; 
+}
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; 
+}
+
+h1 {
+    text-align: center;
+}
+
+.promociones, .oferta {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.promocion-item, .oferta img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns:auto auto auto auto; 
+    grid-template-rows: auto auto;
+    gap: 3em;
+    padding: 20px; 
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; 
+    padding: 20px;
+}
+
+.productos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.producto-item {
+    flex: 1 1 300px; 
+    max-width: 300px; 
+    text-align: center; 
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 255, 255, 0.5); 
+}
+
+.producto-item img {
+    width: 75%; 
+    height: 75%; 
+    object-fit: cover; 
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.producto-item h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.producto-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.producto-item button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.producto-item button:hover {
+    background-color: #0056b3;
+}
+
+.producto-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+    .grid-layout {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+    }
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; 
+    margin: 0 auto;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.8);
+    resize: vertical;
+}
+
+button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.recom {
+    text-align: center;
+    color: #9b9595; 
+    margin-bottom: 20px; 
+}
+
+aside.pregunta {
+    width: 25%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+}
+
+aside img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.preguntaaa div {
+    width: 100%;
+}
+
+.pregunta-respuesta {
+    color:#474747;
+}
+
+.preguntaaa {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.tabla-ofertas {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tabla_ofertas h1 {
+    color: white;
+}
+
+.tabla-ofertas thead {
+    background-color: black;
+    color: white;
+}
+
+.tabla-ofertas th, .tabla-ofertas td {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+}
+
+.tabla-ofertas th {
+    font-size: 1.1rem;
+}
+
+.tabla-ofertas td {
+    font-size: 1rem;
+    color: white;
+}
+
+.tabla-ofertas img {
+    width: 100px;
+    height: auto;
+    max-width: 100%;
+}
+
+.tabla-ofertas button {
+    padding: 0.5rem 1rem;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tabla-ofertas button:hover {
+    background-color: #d32f2f;
+}
+
+.tabla-ofertas tbody tr {
+    transition: transform 0.3s ease-in-out;
+}
+
+.tabla-ofertas tbody tr:hover {
+    transform: scale(1.02);
+    background-color: rgba(123, 12, 156, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+    .tabla-ofertas {
+        font-size: 14px;
+    }
+
+    .tabla-ofertas th, .tabla-ofertas td {
+        padding: 1rem;
+    }
+
+    .tabla-ofertas img {
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .tabla-ofertas {
+        border: 0;
+        box-shadow: none;
+    }
+
+    .tabla-ofertas thead {
+        display: none;
+    }
+
+    .tabla-ofertas tr {
+        margin-bottom: 1rem;
+        display: block;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tabla-ofertas td {
+        display: block;
+        text-align: right;
+        font-size: 13px;
+        border-bottom: 1px dotted #ddd;
+    }
+
+    .tabla-ofertas td:last-child {
+        border-bottom: 0;
+    }
+
+    .tabla-ofertas td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .tabla-ofertas img {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .tabla-ofertas button {
+        display: block;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .tabla-ofertas tbody tr:hover {
+        transform: none;
+    }
+}
+
+

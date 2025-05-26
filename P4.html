@@ -1,0 +1,129 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elden Ring - Detalles del Producto</title>
+    <link rel="stylesheet" href="stylesP.css">
+    <script src="https://kit.fontawesome.com/f4c52f4663.js" crossorigin="anonymous"></script>
+</head>
+<body onload="iniciarPagina()">
+    <header class="header"> 
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagenes/logo.png" alt="logo" class="logo">
+            </a> 
+        </div>
+        <nav> 
+            <ul class="nav-links">
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+    <main class="fondo-4">
+        <section class="product-details">
+            <video controls>
+                <source src="video/elden ring.mp4" type="video/mp4">
+            </video>
+            <div class="related-images">
+                <img src="imagenes/10.jpeg" alt="elder1">
+                <img src="imagenes/11.jpeg" alt="elder2">
+                <img src="imagenes/12.jpeg" alt="elder3">
+                <img src="imagenes/14.jpeg" alt="elder4">
+            </div>
+            <<div class="product-description">
+                <table>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Contenido</th>
+                    </tr>
+                    <tr>
+                        <td>Producto</td>
+                        <td>ELDEN RING Shadow of the Erdtree Deluxe Edition</td>
+                    </tr>
+                    <tr>
+                        <td>Incluye</td>
+                        <td>                           
+                            - DLC de expansión<br>
+                            - Velocidad de curación aumentada<br>
+                            - E-book de diseño<br>
+                            - Aspectos de armas</td></tr><tr><td>Categorías</td><td>
+                            - Un jugador<br>
+                            - JcJ en línea<br>
+                            - Cooperativo en línea<br>
+                            - Logros de Steam<br>
+                            - Cromos de Steam<br>
+                            - Mandos de Xbox<br>
+                            - Steam Cloud
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Reseñas recientes</td>
+                        <td>Muy positivas (18,749)</td>
+                    </tr>
+                    <tr>
+                        <td>Reseñas generales</td>
+                        <td>Muy positivas (695,988)</td>
+                    </tr>
+                    <tr>
+                        <td>SoundTrack</td>
+                        <td><audio controls src="audios/01. Elden Ring.mp3" ></audio></td>
+                    </tr>
+            </table>
+            </div>
+        </section>
+        
+        <aside class="product-info">
+            <img src="imagenes/producto4.jpg" alt="Portada The Last of Us">
+            <l>DESCRIPCION DEL PRODUCTO:</p>
+            <l>EL NUEVO JUEGO DE ROL Y ACCIÓN DE AMBIENTACIÓN FANTÁSTICA. Álzate, Sinluz, y que la gracia te guíe para abrazar el poder del Círculo de Elden y encumbrarte como señor del Círculo en las Tierras Intermedias.</p>
+            <l></l>
+            <l>FECHA DE LANZAMIENTO: 24 FEB 2022</l>
+            <l>PRECIO:S/150 PEN</l>
+            <button onclick='agregarAlCarrito({nombre: "ELDEN RING Shadow of the Erdtree Deluxe Edition", precio: "S/150.00", cantidad: 1})'>
+    Comprar Elden Ring
+</button>
+
+        </aside>
+        
+    </main>
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="reclamaciones.html">
+                        <img src="imagenes/libro_de_reclamaciones.png" alt="libro de reclamaciones">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Nuestra idea nace de la experiencia propia al comprar videojuegos, garantizando confianza porque hemos estado en tu lugar.</p>
+                <p>Fundada en 2024, nos comprometemos a ofrecer siempre las mejores ofertas.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="https://www.facebook.com/?locale=es_LA" class="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    <a href="https://x.com/?lang=es" class="fa fa-twitter"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2024 <b>GAME PRIME</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="script.js">
+</script>

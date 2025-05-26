@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Videojuegos - Game Time</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="iniciarPagina()">
+    <header>                                                                                
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="acerca_d_nosotros.html">Acerca de Nosotros</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+
+            </ul>
+        </nav>
+        <div class="date-time">
+            <span id="fecha">Fecha:</span>
+            <span id="tiempo">Hora:</span>
+        </div>
+        <h1 id="titulo">Bienvenido a Game Time</h1>
+    </header>
+    <main>
+        <section class="banner">
+            <img id="img_banner" src="imagenes/banner1.jpg" alt="Videojuegos destacados">
+        </section>
+
+        <section class="productos">
+            <h2>Nuestros Productos</h2>
+            <div class="producto-item">
+                <img src="imagenes/producto1.jpg" alt="Producto 1">
+                <h3>The Last of us</h3>
+                <p>Un juego de acción y aventura que sigue la historia emocional de Joel y Ellie en un mundo postapocalíptico lleno de peligros y supervivencia.</p>
+                <button onclick="window.location.href='producto1.html'">Ver Más</button>
+            </div>
+            <div class="producto-item">
+                <img src="imagenes/producto2.jpg" alt="Producto 2">
+                <h3>Red Dead Redemption</h3>
+                <p>Un juego de mundo abierto donde los jugadores pueden explorar la ciudad ficticia de Los Santos, participando en misiones criminales con tres protagonistas principales.</p>
+                <button onclick="window.location.href='producto2.html'">Ver Más</button>
+            </div>
+            <div class="producto-item">
+                <img src="imagenes/producto3.jpg" alt="Producto 3">
+                <h3>God of War</h3>
+                <p>Un western épico de mundo abierto que sigue a John Marston en su búsqueda por redimirse en un mundo lleno de forajidos y paisajes vastos.</p>
+                <button onclick="window.location.href='producto3.html'">Ver Más</button>
+            </div>
+            <div class="producto-item">
+                <img src="imagenes/producto4.jpg" alt="Producto 4">
+                <h3>Elder Ring</h3>
+                <p>Un juego de acción y aventura que reinventa la mitología nórdica a través de Kratos, un dios guerrero en busca de redención junto a su hijo Atreus.</p>
+                <button onclick="window.location.href='producto4.html'">Ver Más</button>
+            </div>
+            <div class="producto-item">
+                <img src="imagenes/producto5.jpg" alt="Producto 5">
+                <h3>GTA-5</h3>
+                <p>Un juego de rol de acción en un vasto mundo de fantasía oscura, creado por los autores de Dark Souls, donde los jugadores exploran, luchan y sobreviven en un reino caído.</p>
+                <button onclick="window.location.href='producto5.html'">Ver Más</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="imagenes/facebook.png" alt="Facebook"></a>
+            <a href="https://x.com/home"><img src="imagenes/twitter.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com/"><img src="imagenes/instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script src="script.js">
+
+</script>

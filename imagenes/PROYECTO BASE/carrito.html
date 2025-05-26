@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="stylesP.css">
+</head>
+<body onload="iniciarPagina()">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="acerca_d_nosotros.html">Acerca de Nosotros</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+        </nav>
+        <h1>Carrito de Compras</h1>
+    </header>
+    <main>
+        <section class="checkout-form">
+            <h2>Completa tu compra</h2>
+            <form>
+                <h3>Nombres:</h3>
+                <input type="text" id="nombre" name="nombre">
+
+                <h3>Apellidos:</h3>
+                <input type="text" id="apellido" name="apellido">
+
+                <h3>Correo Electrónico:</h3>
+                <input type="email" id="email" name="email" >
+
+                <h3>Dirección:</h3>
+                <input type="text" id="direccion" name="direccion">
+
+                <h3>Tipo de Tarjeta:</h3>
+                <select id="tipo-tarjeta" name="tipo-tarjeta">
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">MasterCard</option>
+                </select>
+
+                <h3>Número de Tarjeta:</h3>
+                <input type="text" id="tarjeta" name="tarjeta">
+
+                <h3>Fecha de Vencimiento:</h3>
+                <input type="text" id="fecha-vencimiento" name="fecha-vencimiento" placeholder="MM/AA" required>
+
+                <h3>CVV:</h3>
+                <input type="text" id="cvv" name="cvv" required>
+
+            </form>
+        </section>
+
+        <aside class="summary">
+            <h2>Resumen de Compra</h2>
+            <p>Precio del producto: <span id="precio-producto">S/0.00</span></p>
+            <p>Precio de envío: <span id="precio-envio">S/15.00</span></p>
+            <p>Impuestos: <span id="impuestos">S/0.00</span></p>
+            <p>Total: <span id="total-compra">S/0.00</span></p>
+            <button id="resetCarrito">Reiniciar Carrito</button>
+            <p></p>
+            <button id="boton-confirmar">Confirmar Compra</button>
+        </aside>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 Tienda de Videojuegos</p>
+    </footer>
+
+</body>
+</html>
+
+<script src="script.js">
+
+</script>

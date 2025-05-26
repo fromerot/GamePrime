@@ -1,0 +1,126 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="stylesP.css">
+    <script src="https://kit.fontawesome.com/f4c52f4663.js" crossorigin="anonymous"></script>
+</head>
+<body onload="iniciarPagina()">
+    <header class="header"> 
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagenes/logo.png" alt="logo" class="logo">
+            </a> 
+        </div>
+        <nav> 
+            <ul class="nav-links">
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+    <main class="fondo-10">
+        <div class="contactForm">      
+            <h1>Contáctanos 
+                <div class="pacman-container">
+                    <div class="pacman"></div>
+                </div>
+            </h1>
+            <form id="contactForm">
+                <h3>Nombre:</h3>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+            
+                <h3>Correo Electrónico:</h3>
+                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+    
+                <h3>Número de Teléfono:</h3>
+                <input type="tel" id="telefono" name="telefono" required placeholder="Ingresa tu número de teléfono">
+            
+                <h3>Mensaje:</h3>
+                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="5" required></textarea>
+            
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal" id="modalContacto">
+            <h2>¡Gracias por tu mensaje!</h2>
+            <p> Hemos recibido tu consulta
+                y nuestro equipo te responderá pronto.</p>
+        <button onclick="cerrarModalContacto()">Cerrar</button>
+    </div>
+    </main>
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="reclamaciones.html">
+                        <img src="imagenes/libro_de_reclamaciones.png" alt="libro de reclamaciones">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Nuestra idea nace de la experiencia propia al comprar videojuegos, garantizando confianza porque hemos estado en tu lugar.</p>
+                <p>Fundada en 2024, nos comprometemos a ofrecer siempre las mejores ofertas.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="https://www.facebook.com/?locale=es_LA" class="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    <a href="https://x.com/?lang=es" class="fa fa-twitter"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2024 <b>GAME PRIME</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+        
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+        
+            let mensajes = JSON.parse(localStorage.getItem('mensajesContacto')) || [];
+        
+            mensajes.push({
+                nombre: nombre,
+                email: email,
+                telefono: telefono,
+                mensaje: mensaje
+            });
+        
+            localStorage.setItem('mensajesContacto', JSON.stringify(mensajes));
+        
+            // Mostrar modal (opcional)
+            document.getElementById('modalOverlay').style.display = 'block';
+            document.getElementById('modalContacto').style.display = 'block';
+        });
+        
+        function cerrarModalContacto() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('modalContacto').style.display = 'none';
+        }
+        </script>
+</body>
+</html>
+</script>
+<form id="contactForm" onsubmit="guardarMensaje(event)">
+<script src="script.js">

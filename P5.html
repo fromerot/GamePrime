@@ -1,0 +1,139 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Theft Auto V - Detalles del Producto</title>
+    <link rel="stylesheet" href="stylesP.css">
+    <script src="https://kit.fontawesome.com/f4c52f4663.js" crossorigin="anonymous"></script>
+</head>
+<body onload="iniciarPagina()">
+    <header class="header"> 
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagenes/logo.png" alt="logo" class="logo">
+            </a> 
+        </div>
+        <nav> 
+            <ul class="nav-links">
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+    <main class="fondo-5">
+        <section class="product-details">
+            <video controls>
+                <source src="video/Grand Theft Auto V.mp4" type="video/mp4">
+            </video>
+            <div class="related-images">
+                <img src="imagenes/6.jpeg" alt="gta1">
+                <img src="imagenes/7.jpeg" alt="gta2">
+                <img src="imagenes/8.jpeg" alt="gta3">
+                <img src="imagenes/9.jpeg" alt="gta4">
+            </div>
+            <div class="product-description">
+                <table>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Contenido</th>
+                    </tr>
+                    <tr>
+                        <td>Producto</td>
+                        <td>Grand Theft Auto V: Premium Edition & Megalodon Shark Card Bundle</td>
+                    </tr>
+                    <tr>
+                        <td>Incluye</td>
+                        <td>                           
+                            - Premium Edition y tarjeta Tiburón ballena<br>
+                            - Mejora completa de la trama de Grand Theft Auto V<br>
+                            - Acceso gratuito a Grand Theft Auto Online<br>
+                            - Mejoras y contenidos existentes<br>
+                            - Todos los DLC posteriores<br>
+                            - Golpe a The Diamond Casino<br>
+                            - Tráfico de armas y mucho más<br>
+                            - Criminal Enterprise Starter Pack<br>
+                            - Tarjeta Tiburón ballena con 4.250.000 GTA$ para GTA Online
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Categorías</td><td>
+                            - Un jugador<br>
+                            - JcJ en línea<br>
+                            - Logros de Steam<br>
+                            - Steam Cloud<br>
+                            - Remote Play en móvil<br>
+                            - Remote Play en tableta<br>
+                            - Remote Play en TV
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Reseñas recientes</td>
+                        <td>Muy positivas (20,985)</td>
+                    </tr>
+                    <tr>
+                        <td>Reseñas generales</td>
+                        <td>Muy positivas (1,694,117)</td>
+                    </tr>
+                    <tr>
+                        <td>SoundTrack</td>
+                        <td><audio controls src="audios/GTA-5.mp3" ></audio></td>
+                    </tr>
+            </table>
+            </div>
+        </section>
+        
+        <aside class="product-info">
+            <img src="imagenes/producto5.jpg" alt="Portada The Last of Us">
+            <l>DESCRIPCION DEL PRODUCTO:</p>
+            <l>Grand Theft Auto V para PC ofrece a los jugadores la opción de explorar el galardonado mundo de Los Santos y el condado de Blaine con una resolución de 4K y disfrutar del juego a 60 fotogramas por segundo.</p>
+            <l></l>
+            <l>FECHA DE LANZAMIENTO:</l>
+            <l>14 ABR 2015</l>
+            <l></l>
+            <l>PRECIO:S/100 PEN</l>
+            <button onclick='agregarAlCarrito({nombre: "Grand Theft Auto V: Premium Edition & Megalodon Shark Card Bundle", precio: "S/100.00", cantidad: 1})'>
+    Comprar GTA V
+</button>
+        </aside>
+        
+    </main>
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="reclamaciones.html">
+                        <img src="imagenes/libro_de_reclamaciones.png" alt="libro de reclamaciones">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Nuestra idea nace de la experiencia propia al comprar videojuegos, garantizando confianza porque hemos estado en tu lugar.</p>
+                <p>Fundada en 2024, nos comprometemos a ofrecer siempre las mejores ofertas.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="https://www.facebook.com/?locale=es_LA" class="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    <a href="https://x.com/?lang=es" class="fa fa-twitter"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2024 <b>GAME PRIME</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="script.js">
+</script>

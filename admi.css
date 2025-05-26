@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  padding-bottom: 40px;
+}
+
+/* Header */
+.header {
+  background-color: #0a141d;
+  display: flex;
+  align-items: center;
+  padding: 16px 40px;
+  border-bottom: 2px solid #ff3399;
+  height: 90px;
+  gap: 20px;
+  box-shadow: 0 4px 8px rgba(255, 51, 153, 0.1);
+}
+
+.logo-img {
+  height: 70px;
+  width: auto;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 6px #ff3399);
+}
+
+.logo-img:hover {
+  transform: scale(1.08);
+}
+
+.titulo-header h1 {
+  font-size: 30px;
+  color: #ffcc66;
+  text-shadow: 0 0 8px #ff3399;
+  margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px 20px;
+}
+
+.section {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 35px;
+  box-shadow: 0 0 18px rgba(255, 0, 127, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.25);
+}
+
+.section h2 {
+  color: #ff3399;
+  margin-bottom: 20px;
+  font-size: 24px;
+  border-bottom: 2px solid #ff3399;
+  padding-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #262626;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #ff3399;
+  outline: none;
+  background-color: #2f2f2f;
+}
+
+button {
+  background-color: #ff007f;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #e6006e;
+  transform: scale(1.03);
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+ul li {
+  background: #262626;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li button {
+  margin-left: 10px;
+  background-color: #ff3399;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+ul li button:hover {
+  background-color: #e6006e;
+}
+
+.usuario-card {
+    background-color: #262626;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .usuario-card input {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    padding: 6px;
+    color: #fff;
+  }
+  
+  .usuario-card button {
+    margin-right: 6px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .usuario-card .editar {
+    background-color: #ffa500;
+    color: #000;
+  }
+  
+  .usuario-card .guardar {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .usuario-card .eliminar {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  /* Contenedor lista mensajes */
+#listaMensajes {
+    padding: 0;
+    margin-top: 20px;
+    max-height: 450px;
+    overflow-y: auto;
+  }
+  
+  /* Cada mensaje como tarjeta */
+  #listaMensajes li {
+    background-color: #e9f0ff;
+    padding: 15px 20px;
+    margin: 12px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #333;
+  }
+  
+  /* Nombre destacado */
+  #listaMensajes li strong {
+    font-size: 1.2rem;
+    color: #007bff;
+  }
+  
+  /* Datos secundarios */
+  #listaMensajes li div {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Mensaje texto */
+  #listaMensajes li p {
+    margin: 6px 0 0 0;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  /* Contenedor botones (alineados a la derecha) */
+  #listaMensajes li .botonesMensaje {
+    margin-top: 10px;
+    align-self: flex-end;
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Botones estilo */
+  #listaMensajes li button {
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    color: white;
+  }
+  
+  /* Botón Responder */
+  #listaMensajes li button.responder {
+    background-color: #007bff;
+  }
+  
+  #listaMensajes li button.responder:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Botón Eliminar */
+  #listaMensajes li button.eliminar {
+    background-color: #ff3399;
+  }
+  
+  #listaMensajes li button.eliminar:hover {
+    background-color: #e6006e;
+  }
+  
+  /* Scrollbar personalizada */
+  #listaMensajes::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  #listaMensajes::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  #listaMensajes::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 8px;
+  }
+  
+  .contenedor-compras {
+    background-color: #000000;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 0, 221, 0.966);
+    max-width: 800px;
+    margin: 2rem auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+.compra-item {
+    background-color: #000000;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #cb0af1;
+}
+
+.compra-item button {
+    margin-top: 8px;
+    padding: 6px 12px;
+    background-color: #e74c3c;
+    color: #057aff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.compra-item button:hover {
+    background-color: #ff1900;
+}

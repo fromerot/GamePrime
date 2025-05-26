@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.date-time {
+    text-align: right;
+    margin: 10px 20px 0 0;
+    color: #ccc;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; 
+}
+
+.promociones, .oferta {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.promocion-item, .oferta img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.productos {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.productos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.producto-item {
+    display: inline-block;
+    width: 18%;
+    margin: 1%;
+    text-align: center;
+    vertical-align: top;
+}
+
+.producto-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.producto-item h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.producto-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.producto-item button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.producto-item button:hover {
+    background-color: #555;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; 
+    margin: 0 auto;
+}
+
+textarea {
+    padding: 10px; 
+    font-size: 16px;
+    resize: vertical;
+}
+
+button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.recom {
+    text-align: center;
+    color: #9b9595; 
+    margin-bottom: 20px; 
+}
+
+aside.pregunta {
+    width: 25%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+}
+
+aside img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.preguntaaa div {
+    width: 100%;
+}
+
+.pregunta-respuesta {
+    color:#474747;
+}
+
+.preguntaaa {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+

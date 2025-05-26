@@ -1,0 +1,125 @@
+<link href="https://fonts.googleapis.com/css2?family=Nabla&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Videojuegos - GAME PRIME</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/f4c52f4663.js" crossorigin="anonymous"></script>
+</head>
+<body onload="iniciarPagina()">
+    <header class="header"> 
+        <div class="logo">
+            <a href="indexinicio.html">
+                <img src="imagenes/logo.png" alt="logo" class="logo">
+            </a> 
+        </div>
+        <nav> 
+            <ul class="nav-links">
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="fondo-0">
+        <section class="banner">
+            <img id="img_banner" src="imagenes/banner1.jpg" alt="Videojuegos destacados">
+        </section>
+        <div class="filtro">
+        <h3>Filtrar por Categoría:</h3>
+            <div class="categoria">
+                <select id="categoria-juegos" name="categoria-juegos" onchange="filtrarJuegos()">
+                    <option value="">Todos los Juegos</option>
+                    <option value="accion">Acción</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="rol">Rol</option>
+                    <option value="deportes">Deportes</option>
+                </select>
+            </div>
+        </div>
+        <section class="productos" id="juegos-lista">
+            <div class="grid-layout">   
+                <div class="producto-item" data-categoria="accion">
+                    <img src="imagenes/producto1.jpg" alt="Producto 1">
+                        <h3>The Last of Us</h3>
+                        <button onclick="window.location.href='P1.html'">Ver Más</button>
+                    </div>
+                    <div class="producto-item" data-categoria="aventura">
+                        <img src="imagenes/producto2.jpg" alt="Producto 2">
+                        <h3>Red Dead Redemption</h3>
+                        <button onclick="window.location.href='P2.html'">Ver Más</button>
+                    </div>
+                    <div class="producto-item" data-categoria="accion">
+                        <img src="imagenes/producto3.jpg" alt="Producto 3">
+                        <h3>God of War</h3>
+                        <button onclick="window.location.href='P3.html'">Ver Más</button>
+                    </div>
+                    <div class="producto-item" data-categoria="aventura">
+                        <img src="imagenes/producto4.jpg" alt="Producto 4">
+                        <h3>Elden Ring</h3>
+                        <button onclick="window.location.href='P4.html'">Ver Más</button>
+                    </div>
+                    <div class="producto-item" data-categoria="accion">
+                        <img src="imagenes/producto5.jpg" alt="Producto 5">
+                        <h3>GTA-5</h3>
+                        <button onclick="window.location.href='P5.html'">Ver Más</button>
+                    </div>
+                    <div class="producto-item" data-categoria="accion">
+                        <img src="imagenes/producto6.jpg" alt="Producto 6">
+                        <h3>Marvel’s Spider-Man</h3>
+                        <button onclick="window.location.href='P6.html'">Ver Más</button>
+                    </div>
+                    <div class="producto-item" data-categoria="deportes">
+                        <img src="imagenes/producto7.jpg" alt="Producto 7">
+                        <h3>FC 2024</h3>
+                        <button onclick="window.location.href='P7.html'">Ver Más</button>
+                    </div>
+                    <div class="producto-item" data-categoria="rol">
+                        <img src="imagenes/producto8.jpeg" alt="Producto 8">
+                        <h3>Baldur's Gate III</h3>
+                        <button onclick="window.location.href='P8.html'">Ver Más</button>
+                    </div>
+                </div>
+            </div>    
+        </section>
+    </main>
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="reclamaciones.html">
+                        <img src="imagenes/libro_de_reclamaciones.png" alt="libro de reclamaciones">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Nuestra idea nace de la experiencia propia al comprar videojuegos, garantizando confianza porque hemos estado en tu lugar.</p>
+                <p>Fundada en 2024, nos comprometemos a ofrecer siempre las mejores ofertas.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="https://www.facebook.com/?locale=es_LA" class="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    <a href="https://x.com/?lang=es" class="fa fa-twitter"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2024 <b>GAME PRIME</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="script_sesion.js"></script>
+<script src="script.js"></script>

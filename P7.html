@@ -1,0 +1,141 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last of Us - Detalles del Producto</title>
+    <link rel="stylesheet" href="stylesP.css">
+    <script src="https://kit.fontawesome.com/f4c52f4663.js" crossorigin="anonymous"></script>
+</head>
+<body onload="iniciarPagina()">
+    <header class="header"> 
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagenes/logo.png" alt="logo" class="logo">
+            </a> 
+        </div>
+        <nav> 
+            <ul class="nav-links">
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="contactanos.html">Contacto</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+    <main class="fondo-7">
+        <section class="product-details">
+            <video controls>
+                <source src="video/EA SPORTS FC™ 24.mp4" type="video/mp4">
+            </video>
+            <div class="related-images">
+                <img src="imagenes/24.jpeg" alt="FC 2024 1">
+                <img src="imagenes/25.jpeg" alt="FC 2024 2">
+                <img src="imagenes/26.jpeg" alt="FC 2024 3">
+                <img src="imagenes/27.jpeg" alt="FC 2024">
+            </div>
+            <div class="product-description">
+                <table>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Contenido</th>
+                    </tr>
+                    <tr>
+                        <td>Producto</td>
+                        <td>Juego base de FIFA 24</td>
+                    </tr>
+                    <tr>
+                        <td>Incluye</td>
+                        <td>                            
+                            - 4,600 FIFA Points para mejorar tu equipo en Ultimate Team<br>
+                            - Bonificaciones para el modo Carrera<br>
+                            - Jugador del equipo de la semana para Ultimate Team<br>
+                            - Cesión de un jugador icónico por 5 partidos<br>
+                            - Equipos y estadios exclusivos
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Categorías</td>
+                        <td>
+                            - Multijugador y Un jugador<br>
+                            - Compatibilidad con mandos de Xbox y PlayStation<br>
+                            - Gráficos optimizados para PC y consolas de nueva generación
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Reseñas recientes</td>
+                        <td>Positivas (2,610)</td>
+                    </tr>
+                    <tr>
+                        <td>Reseñas generales</td>
+                        <td>Mayormente positivas (71,805)</td>
+                    </tr>
+                    <tr>
+                        <td>SoundTrack</td>
+                        <td>
+                            <audio controls src="audios/fifa_1.mp3" ></audio>
+                            <audio controls src="audios/fifa_2.mp3" ></audio>
+                            <audio controls src="audios/fifa_3.mp3" ></audio>
+                            <audio controls src="audios/fifa_4.mp3" ></audio>
+                            <audio controls src="audios/fifa_5.mp3" ></audio>
+                        </td>
+                    </tr>
+            </table>
+            </div>
+        </section>
+        
+        <aside class="product-info">
+            <img src="imagenes/producto7.jpg" alt="FC 2024">
+            <l>DESCRIPCION DEL PRODUCTO:</p>
+            <l>FIFA 24 es un simulador de fútbol donde los jugadores pueden disfrutar de partidos realistas, con equipos y ligas oficiales. El juego incluye modos como Ultimate Team, donde construyes y mejoras tu equipo con jugadores actuales e históricos, y Modo Carrera, donde gestionas un club o juegas como un solo futbolista.</p>
+            <l></l>
+            <l>FECHA DE LANZAMIENTO:</l>
+            <l>12 MAR 2024</l>
+            <l></l>
+            <l>PRECIO:</l>
+            <l>S/250 PEN</l>
+            <button onclick='agregarAlCarrito({nombre: "FIFA 24", precio: "S/250.00", cantidad: 1})'>
+Comprar FIFA 24
+</button>
+
+        </aside>
+        
+    </main>
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="reclamaciones.html">
+                        <img src="imagenes/libro_de_reclamaciones.png" alt="libro de reclamaciones">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Nuestra idea nace de la experiencia propia al comprar videojuegos, garantizando confianza porque hemos estado en tu lugar.</p>
+                <p>Fundada en 2024, nos comprometemos a ofrecer siempre las mejores ofertas.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="https://www.facebook.com/?locale=es_LA" class="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+                    <a href="https://x.com/?lang=es" class="fa fa-twitter"></a>
+                    <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2024 <b>GAME PRIME</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="script.js">
+</script>
+

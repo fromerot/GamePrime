@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Panel de Administración</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="admi.css"/>
+    <script defer src="admi.js"></script>
+</head>
+<body>
+    <header class="header">
+    <div class="logo">
+        <a href="indexinicio.html">
+        <img src="imagenes/logo.png" alt="logo" class="logo-img"/>
+        </a> 
+    </div>
+    <div class="titulo-header">
+        <h1>Panel de Administración</h1>
+    </div>
+    </header>
+
+    <div class="container">
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section">
+        <h2>Dashboard</h2>
+        
+        <div class="dashboard-cards">
+            <div class="card">
+            <h3>Ventas</h3>
+            <p>Total: <span id="totalVentas">1243</span></p>
+            <canvas id="ventasRegionChart"></canvas>
+            <canvas id="ventasPlataformaChart"></canvas>
+            </div>
+        
+            <div class="card">
+            <h3>Descargas</h3>
+            <p>Total: <span id="totalDescargas">3270</span></p>
+            <canvas id="descargasPlataformaChart"></canvas>
+            <canvas id="descargasRegionChart"></canvas>
+            </div>
+        
+            <div class="card">
+            <h3>Actividad del Usuario</h3>
+            <p>Usuarios Activos: <span id="usuariosActivos">830</span></p>
+            <canvas id="tiempoJuegoChart"></canvas>
+            </div>
+        
+            <div class="card">
+            <h3>Engagement</h3>
+            <p>Usuarios Frecuentes: <span id="usuariosEngage">560</span></p>
+            <canvas id="engageChart"></canvas>
+            </div>
+        </div>
+
+        </section>     
+        <section class="contenedor-compras">
+        <main class="panel-admin">
+        <h2>Compras Registradas</h2>
+        <!-- Aquí se mostrarán las compras -->
+        <div id="lista-compras"></div>
+        <!-- Botón para eliminar todo -->
+        <button onclick="eliminarCompras()">Eliminar Todas las Compras</button>
+        </main>
+
+        <div id="lista-compras"></div>
+        <div class="masVendido">
+        <p id="juegoMasVendido"></p>
+        </div>
+        </section>
+
+
+
+    <script>
+function cargarCompras() {
+    const lista = document.getElementById('lista-compras');
+    const compras = JSON.parse(localStorage.getItem('compras')) || [];
+
+    if (compras.length === 0) {
+        lista.innerHTML = `<p><strong>Juego más vendido:</strong> Ninguno (0 ventas)</p>`;
+        return;
+    }
+
+    const conteo = {};
+    compras.forEach(c => {
+        conteo[c.producto] = (conteo[c.producto] || 0) + 1;
+    });
+
+    let juegoMasVendido = 'Ninguno';
+    let maxVentas = 0;
+    for (let juego in conteo) {
+        if (conteo[juego] > maxVentas) {
+            juegoMasVendido = juego;
+            maxVentas = conteo[juego];
+        }
+    }
+
+    lista.innerHTML = `<p><strong>Juego más vendido:</strong> ${juegoMasVendido} (${maxVentas} ventas)</p>`;
+
+    compras.forEach(compra => {
+        const div = document.createElement('div');
+        div.classList.add('compra-item');
+        div.innerHTML = `
+            <p><strong>Nombre:</strong> ${compra.nombre} ${compra.apellido}</p>
+            <p><strong>Producto:</strong> ${compra.producto}</p>
+            <p><strong>Precio:</strong> ${compra.precio}</p>
+            <p><strong>Fecha:</strong> ${compra.fecha}</p>
+        `;
+        lista.appendChild(div);
+    });
+}
+
+function eliminarCompras() {
+    if (confirm("¿Estás seguro de eliminar todas las compras?")) {
+        localStorage.removeItem("compras");
+        location.reload(); // recarga la página para actualizar la vista
+    }
+}
+window.onload = cargarCompras;
+</script>
+
+    <!-- Gestión de Productos -->
+    <section id="gestionProductos" class="section">
+        <h2>Gestión de Productos</h2>
+        <form id="formProducto">
+        <input type="text" id="tituloProducto" placeholder="Título" required/>
+        <input type="text" id="categoriaProducto" placeholder="Categoría" required/>
+        <input type="number" id="precioProducto" placeholder="Precio" required/>
+        <input type="date" id="fechaLanzamiento" required/>
+        <input type="number" id="descuentoProducto" placeholder="% Descuento"/>
+        <button type="submit">Agregar Producto</button>
+        </form>
+        <ul id="listaProductos"></ul>
+    </section>
+
+    <!-- Gestión de Usuarios -->
+    <section id="gestionUsuarios" class="section">
+        <h2>Gestión de Usuarios</h2>
+        <form id="formUsuario">
+        <input type="text" id="nombreUsuario" placeholder="Nombre" required />
+        <input type="email" id="correoUsuario" placeholder="Correo" required />
+        <select id="rolUsuario">
+            <option value="cliente">Cliente</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Agregar Usuario</button>
+        </form>
+
+        <h3>Usuarios Registrados:</h3>
+        <div id="listaUsuarios"></div>
+    </section>
+
+    <!-- Gestión de Proveedores -->
+    <section id="gestionProveedores" class="section">
+        <h2>Gestión de Proveedores</h2>
+        <form id="formProveedor">
+        <input type="text" id="nombreProveedor" placeholder="Nombre" required/>
+        <input type="email" id="correoProveedor" placeholder="Correo" required/>
+        <input type="text" id="articulosProveedor" placeholder="Artículos" required/>
+        <button type="submit">Agregar Proveedor</button>
+        </form>
+        <ul id="listaProveedores"></ul>
+    </section>
+
+    <!-- Sección de Contáctanos -->
+    <section id="seccionContactanos" class="section">
+        <h2>Mensajes de Contáctanos</h2>
+    <ul id="listaMensajes"></ul>
+    <script>
+        function cargarMensajes() {
+            const lista = document.getElementById('listaMensajes');
+            lista.innerHTML = '';
+        
+            const mensajes = JSON.parse(localStorage.getItem('mensajesContacto')) || [];
+        
+            mensajes.forEach((m, index) => {
+                const li = document.createElement('li');
+                li.style.border = "1px solid #ccc";
+                li.style.padding = "10px";
+                li.style.marginBottom = "10px";
+                li.style.borderRadius = "8px";
+                li.style.background = "#f9f9f9";
+        
+                const nombre = document.createElement('strong');
+                nombre.textContent = m.nombre;
+        
+                const email = document.createElement('div');
+                email.innerHTML = `<strong>Correo:</strong> ${m.email}`;
+        
+                const telefono = document.createElement('div');
+                telefono.innerHTML = `<strong>Teléfono:</strong> ${m.telefono}`;
+        
+                const mensaje = document.createElement('p');
+                mensaje.textContent = m.mensaje;
+        
+                const btnResponder = document.createElement('button');
+                btnResponder.textContent = 'Responder';
+                btnResponder.style.marginRight = '10px';
+                btnResponder.onclick = () => responderMensaje(m.email);
+        
+                const btnEliminar = document.createElement('button');
+                btnEliminar.textContent = 'Eliminar';
+                btnEliminar.onclick = () => eliminarMensaje(index);
+        
+                li.appendChild(nombre);
+                li.appendChild(email);
+                li.appendChild(telefono);
+                li.appendChild(mensaje);
+                li.appendChild(btnResponder);
+                li.appendChild(btnEliminar);
+
+                lista.appendChild(li);
+            });
+        }
+        
+        function responderMensaje(email) {
+            window.location.href = `mailto:${email}?subject=Respuesta a tu mensaje`;
+        }
+        
+        function eliminarMensaje(index) {
+            let mensajes = JSON.parse(localStorage.getItem('mensajesContacto')) || [];
+            mensajes.splice(index, 1);
+            localStorage.setItem('mensajesContacto', JSON.stringify(mensajes));
+            cargarMensajes();
+        }
+        
+        window.addEventListener('DOMContentLoaded', cargarMensajes);
+        </script>
+    </div>
+</body>
+</html>
