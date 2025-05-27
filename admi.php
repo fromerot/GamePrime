@@ -1,12 +1,6 @@
 <?php
 header("Content-Type: application/json");
-
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "juegos_db";
-
-$conn = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli("localhost", "root", "", "juegos_db");
 
 if ($conn->connect_error) {
     die(json_encode(["status" => "error", "message" => "Conexión fallida"]));
@@ -45,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = intval($_POST['id']);
     $stmt = $conn->prepare("DELETE FROM productos WHERE id = ?");
     $stmt->bind_param("i", $id);
-
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);
     } else {
@@ -104,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = intval($_POST['id']);
     $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
     $stmt->bind_param("i", $id);
-
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);
     } else {
@@ -161,7 +153,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = intval($_POST['id']);
     $stmt = $conn->prepare("DELETE FROM proveedores WHERE id = ?");
     $stmt->bind_param("i", $id);
-
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);
     } else {
