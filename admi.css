@@ -119,6 +119,22 @@ button.eliminar {
     margin-left: 10px;
 }
 
+.modificar-button {
+  background-color: #ffa500 !important;
+  color: #000 !important;
+  padding: 6px 10px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.eliminar-button {
+  background-color: #ff3399 !important;
+  color: white !important;
+  padding: 6px 10px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;

@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (formProducto) {
     formProducto.addEventListener("submit", function(e) {
       e.preventDefault();
-
       const formData = new FormData();
       formData.append("action", "add_producto");
       formData.append("titulo", document.getElementById("tituloProducto").value.trim());
@@ -16,7 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
       formData.append("descuento", document.getElementById("descuentoProducto").value.trim());
 
       fetch("admi.php", { method: "POST", body: formData })
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) throw new Error("Error en respuesta del servidor.");
+          return res.json();
+        })
         .then(data => {
           if (data.status === "success") {
             alert("✅ Producto agregado correctamente.");
@@ -25,44 +27,58 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             alert("❌ Error al agregar producto: " + data.message);
           }
+        })
+        .catch(err => {
+          console.error("Error al enviar producto:", err);
+          alert("⚠️ Error al conectar con el servidor.");
         });
     });
   }
 
-function cargarProductos() {
+  function cargarProductos() {
     fetch('admi.php')
-        .then(res => res.json())
-        .then(productos => {
-            const lista = document.getElementById("listaProductos");
-            lista.innerHTML = '';
-            if (!Array.isArray(productos)) return;
-            productos.forEach(p => {
-                const li = document.createElement('li');
-                li.textContent = `${p.titulo} - ${p.categoria} - $${parseFloat(p.precio).toFixed(2)}`;
+      .then(res => {
+        if (!res.ok) throw new Error("Error HTTP al cargar productos.");
+        return res.json();
+      })
+      .then(productos => {
+        console.log("Datos recibidos de productos:", productos);
 
-                // Botón Modificar
-                const btnModificar = document.createElement('button');
-                btnModificar.textContent = 'Modificar';
-                btnModificar.style.marginLeft = '10px';
-                btnModificar.onclick = () => modificarProducto(p.id, p.titulo, p.categoria, p.precio, p.fecha_lanzamiento, p.descuento);
+        if (!Array.isArray(productos)) {
+          listaProductos.innerHTML = "<li>No hay productos disponibles o hubo un error.</li>";
+          return;
+        }
 
-                // Botón Eliminar
-                const btnEliminar = document.createElement('button');
-                btnEliminar.textContent = 'Eliminar';
-                btnEliminar.style.marginLeft = '10px';
-                btnEliminar.onclick = () => eliminarProducto(p.id);
+        listaProductos.innerHTML = '';
+        productos.forEach(p => {
+          const li = document.createElement('li');
+          li.textContent = `${p.titulo} - ${p.categoria} - $${parseFloat(p.precio).toFixed(2)}`;
 
-                // Añadir botones al elemento
-                li.appendChild(btnModificar);
-                li.appendChild(btnEliminar);
-                lista.appendChild(li);
-            });
+          // Botón Modificar
+          const btnModificar = document.createElement('button');
+          btnModificar.textContent = 'Modificar';
+          btnModificar.classList.add("modificar-button");
+          btnModificar.onclick = () => modificarProducto(p.id, p.titulo, p.categoria, p.precio, p.fecha_lanzamiento, p.descuento);
+
+          // Botón Eliminar
+          const btnEliminar = document.createElement('button');
+          btnEliminar.textContent = 'Eliminar';
+          btnEliminar.classList.add("eliminar-button");
+          btnEliminar.onclick = () => eliminarProducto(p.id);
+
+          li.appendChild(btnModificar);
+          li.appendChild(btnEliminar);
+          listaProductos.appendChild(li);
         });
-}
+      })
+      .catch(err => {
+        console.error("Error al cargar productos:", err);
+        listaProductos.innerHTML = `<li>Error al cargar productos: ${err.message}</li>`;
+      });
+  }
 
   function eliminarProducto(id) {
     if (!confirm("¿Estás seguro de eliminar este producto?")) return;
-
     const formData = new FormData();
     formData.append("action", "delete_producto");
     formData.append("id", id);
@@ -79,7 +95,7 @@ function cargarProductos() {
       });
   }
 
-function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
+  function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
     const nuevoTitulo = prompt("Nuevo título:", titulo);
     const nuevaCategoria = prompt("Nueva categoría:", categoria);
     const nuevoPrecio = prompt("Nuevo precio:", precio);
@@ -96,16 +112,16 @@ function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
     formData.append('descuento', nuevoDescuento);
 
     fetch('admi.php', { method: 'POST', body: formData })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                alert('✏️ Producto actualizado.');
-                cargarProductos();
-            } else {
-                alert('❌ Error al actualizar producto: ' + data.message);
-            }
-        });
-}
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert('✏️ Producto actualizado.');
+          cargarProductos();
+        } else {
+          alert('❌ Error al actualizar producto: ' + data.message);
+        }
+      });
+  }
 
   // === USUARIOS ===
   const formUsuario = document.getElementById("formUsuario");
@@ -114,7 +130,6 @@ function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
   if (formUsuario) {
     formUsuario.addEventListener("submit", function(e) {
       e.preventDefault();
-
       const formData = new FormData();
       formData.append("action", "add_usuario");
       formData.append("nombre", document.getElementById("nombreUsuario").value.trim());
@@ -146,12 +161,12 @@ function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
 
           const btnModificar = document.createElement("button");
           btnModificar.textContent = "Modificar";
-          btnModificar.className = "modificar";
+          btnModificar.classList.add("modificar-button");
           btnModificar.onclick = () => modificarUsuario(u.id, u.nombre, u.correo, u.rol);
 
           const btnEliminar = document.createElement("button");
           btnEliminar.textContent = "Eliminar";
-          btnEliminar.className = "eliminar";
+          btnEliminar.classList.add("eliminar-button");
           btnEliminar.onclick = () => eliminarUsuario(u.id);
 
           li.appendChild(btnModificar);
@@ -163,7 +178,6 @@ function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
 
   function eliminarUsuario(id) {
     if (!confirm("¿Estás seguro de eliminar a este usuario?")) return;
-
     const formData = new FormData();
     formData.append("action", "delete_usuario");
     formData.append("id", id);
@@ -211,7 +225,6 @@ function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
   if (formProveedor) {
     formProveedor.addEventListener("submit", function(e) {
       e.preventDefault();
-
       const formData = new FormData();
       formData.append("action", "add_proveedor");
       formData.append("nombre", document.getElementById("nombreProveedor").value.trim());
@@ -243,12 +256,12 @@ function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
 
           const btnModificar = document.createElement("button");
           btnModificar.textContent = "Modificar";
-          btnModificar.className = "modificar";
+          btnModificar.classList.add("modificar-button");
           btnModificar.onclick = () => modificarProveedor(p.id, p.nombre, p.correo, p.articulos);
 
           const btnEliminar = document.createElement("button");
           btnEliminar.textContent = "Eliminar";
-          btnEliminar.className = "eliminar";
+          btnEliminar.classList.add("eliminar-button");
           btnEliminar.onclick = () => eliminarProveedor(p.id);
 
           li.appendChild(btnModificar);
@@ -260,7 +273,6 @@ function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
 
   function eliminarProveedor(id) {
     if (!confirm("¿Estás seguro de eliminar a este proveedor?")) return;
-
     const formData = new FormData();
     formData.append("action", "delete_proveedor");
     formData.append("id", id);
