@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: application/json");
+
 $conn = new mysqli("localhost", "root", "", "juegos_db");
 
 if ($conn->connect_error) {
@@ -21,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $titulo = $conn->real_escape_string($_POST['titulo']);
     $categoria = $conn->real_escape_string($_POST['categoria']);
     $precio = floatval($_POST['precio']);
-    $fecha_lanzamiento = $conn->real_escape_string($_POST['fecha_lanzamiento']);
-    $descuento = isset($_POST['descuento']) ? floatval($_POST['descuento']) : null;
+    $fecha = $conn->real_escape_string($_POST['fecha_lanzamiento']);
+    $descuento = floatval($_POST['descuento']);
 
     $stmt = $conn->prepare("INSERT INTO productos (titulo, categoria, precio, fecha_lanzamiento, descuento) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssdss", $titulo, $categoria, $precio, $fecha_lanzamiento, $descuento);
+    $stmt->bind_param("ssdss", $titulo, $categoria, $precio, $fecha, $descuento);
 
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);
@@ -52,11 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $titulo = $conn->real_escape_string($_POST['titulo']);
     $categoria = $conn->real_escape_string($_POST['categoria']);
     $precio = floatval($_POST['precio']);
-    $fecha_lanzamiento = $conn->real_escape_string($_POST['fecha_lanzamiento']);
-    $descuento = isset($_POST['descuento']) ? floatval($_POST['descuento']) : null;
+    $fecha = $conn->real_escape_string($_POST['fecha_lanzamiento']);
+    $descuento = floatval($_POST['descuento']);
 
     $stmt = $conn->prepare("UPDATE productos SET titulo=?, categoria=?, precio=?, fecha_lanzamiento=?, descuento=? WHERE id=?");
-    $stmt->bind_param("ssdssi", $titulo, $categoria, $precio, $fecha_lanzamiento, $descuento, $id);
+    $stmt->bind_param("ssdssi", $titulo, $categoria, $precio, $fecha, $descuento, $id);
 
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);
@@ -153,6 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = intval($_POST['id']);
     $stmt = $conn->prepare("DELETE FROM proveedores WHERE id = ?");
     $stmt->bind_param("i", $id);
+
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);
     } else {
