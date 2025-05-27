@@ -53,11 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $titulo = $conn->real_escape_string($_POST['titulo']);
     $categoria = $conn->real_escape_string($_POST['categoria']);
     $precio = floatval($_POST['precio']);
-    $fecha = $conn->real_escape_string($_POST['fecha_lanzamiento']);
-    $descuento = floatval($_POST['descuento']);
+    $fecha_lanzamiento = $conn->real_escape_string($_POST['fecha_lanzamiento']);
+    $descuento = isset($_POST['descuento']) ? floatval($_POST['descuento']) : null;
 
     $stmt = $conn->prepare("UPDATE productos SET titulo=?, categoria=?, precio=?, fecha_lanzamiento=?, descuento=? WHERE id=?");
-    $stmt->bind_param("ssdssi", $titulo, $categoria, $precio, $fecha, $descuento, $id);
+    $stmt->bind_param("ssdssi", $titulo, $categoria, $precio, $fecha_lanzamiento, $descuento, $id);
 
     if ($stmt->execute()) {
         echo json_encode(["status" => "success"]);

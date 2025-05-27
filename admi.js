@@ -29,31 +29,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function cargarProductos() {
-    fetch("admi.php")
-      .then(res => res.json())
-      .then(productos => {
-        listaProductos.innerHTML = "";
-        productos.forEach(p => {
-          const li = document.createElement("li");
-          li.textContent = `${p.titulo} - $${parseFloat(p.precio).toFixed(2)} - ${p.categoria}`;
+function cargarProductos() {
+    fetch('admi.php')
+        .then(res => res.json())
+        .then(productos => {
+            const lista = document.getElementById("listaProductos");
+            lista.innerHTML = '';
+            if (!Array.isArray(productos)) return;
+            productos.forEach(p => {
+                const li = document.createElement('li');
+                li.textContent = `${p.titulo} - ${p.categoria} - $${parseFloat(p.precio).toFixed(2)}`;
 
-          const btnModificar = document.createElement("button");
-          btnModificar.textContent = "Modificar";
-          btnModificar.className = "modificar";
-          btnModificar.onclick = () => modificarProducto(p.id, p.titulo, p.categoria, p.precio, p.fecha_lanzamiento, p.descuento);
+                // Botón Modificar
+                const btnModificar = document.createElement('button');
+                btnModificar.textContent = 'Modificar';
+                btnModificar.style.marginLeft = '10px';
+                btnModificar.onclick = () => modificarProducto(p.id, p.titulo, p.categoria, p.precio, p.fecha_lanzamiento, p.descuento);
 
-          const btnEliminar = document.createElement("button");
-          btnEliminar.textContent = "Eliminar";
-          btnEliminar.className = "eliminar";
-          btnEliminar.onclick = () => eliminarProducto(p.id);
+                // Botón Eliminar
+                const btnEliminar = document.createElement('button');
+                btnEliminar.textContent = 'Eliminar';
+                btnEliminar.style.marginLeft = '10px';
+                btnEliminar.onclick = () => eliminarProducto(p.id);
 
-          li.appendChild(btnModificar);
-          li.appendChild(btnEliminar);
-          listaProductos.appendChild(li);
+                // Añadir botones al elemento
+                li.appendChild(btnModificar);
+                li.appendChild(btnEliminar);
+                lista.appendChild(li);
+            });
         });
-      });
-  }
+}
 
   function eliminarProducto(id) {
     if (!confirm("¿Estás seguro de eliminar este producto?")) return;
@@ -74,33 +79,33 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
+function modificarProducto(id, titulo, categoria, precio, fecha, descuento) {
     const nuevoTitulo = prompt("Nuevo título:", titulo);
     const nuevaCategoria = prompt("Nueva categoría:", categoria);
     const nuevoPrecio = prompt("Nuevo precio:", precio);
     const nuevaFecha = prompt("Fecha de lanzamiento:", fecha);
-    const nuevoDescuento = prompt("Descuento (%):", descuento || "");
+    const nuevoDescuento = prompt("Descuento (%):", descuento || '');
 
     const formData = new FormData();
-    formData.append("action", "update_producto");
-    formData.append("id", id);
-    formData.append("titulo", nuevoTitulo);
-    formData.append("categoria", nuevaCategoria);
-    formData.append("precio", parseFloat(nuevoPrecio));
-    formData.append("fecha_lanzamiento", nuevaFecha);
-    formData.append("descuento", nuevoDescuento);
+    formData.append('action', 'update_producto');
+    formData.append('id', id);
+    formData.append('titulo', nuevoTitulo);
+    formData.append('categoria', nuevaCategoria);
+    formData.append('precio', parseFloat(nuevoPrecio));
+    formData.append('fecha_lanzamiento', nuevaFecha);
+    formData.append('descuento', nuevoDescuento);
 
-    fetch("admi.php", { method: "POST", body: formData })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === "success") {
-          alert("✏️ Producto actualizado.");
-          cargarProductos();
-        } else {
-          alert("❌ Error al actualizar producto: " + data.message);
-        }
-      });
-  }
+    fetch('admi.php', { method: 'POST', body: formData })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('✏️ Producto actualizado.');
+                cargarProductos();
+            } else {
+                alert('❌ Error al actualizar producto: ' + data.message);
+            }
+        });
+}
 
   // === USUARIOS ===
   const formUsuario = document.getElementById("formUsuario");

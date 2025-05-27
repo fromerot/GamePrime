@@ -107,6 +107,18 @@ button:hover {
   transform: scale(1.03);
 }
 
+button.modificar {
+    background-color: #ff9900; /* Naranja claro */
+    color: white;
+    margin-left: 10px;
+}
+
+button.eliminar {
+    background-color: #ff4d4d; /* Rojo claro */
+    color: white;
+    margin-left: 10px;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
