@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json");
 
-$conn = new mysqli("localhost", "root", "", "juegos_db");
+$conn = new mysqli("34.45.135.164", "root", "123456", "juegos_db");
 
 if ($conn->connect_error) {
     die(json_encode(["status" => "error", "message" => "Conexión fallida"]));
